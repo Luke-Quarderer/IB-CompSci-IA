@@ -18,8 +18,14 @@ router.post('/', (req, res) => {
         name: req.body.name
     })
     user.save().then((err, newUser) => {
+        //res.redirect(`users/ ${newUser.id})
         res.redirect(`users`)
     }).catch((err)=>{
+        if(err){
+        res.render('users/new', {
+            user: user, 
+            errorMessage: 'Error creating User'
+        })}
         console.log(err)
     }) 
 })
