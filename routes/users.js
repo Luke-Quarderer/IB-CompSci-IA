@@ -13,21 +13,21 @@ router.get('/new', (req, res) => {
 }) 
 
 // Create User Route
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
     const user = new User({
         name: req.body.name
     })
-    user.save().then((err, newUser) => {
+
+    try{
+        const newUser = await user.save()
         //res.redirect(`users/ ${newUser.id})
         res.redirect(`users`)
-    }).catch((err)=>{
-        if(err){
+    } catch {
         res.render('users/new', {
             user: user, 
             errorMessage: 'Error creating User'
-        })}
-        console.log(err)
-    }) 
+        })
+    }   
 })
 
 module.exports = router  
