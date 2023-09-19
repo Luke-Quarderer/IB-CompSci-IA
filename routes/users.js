@@ -3,8 +3,13 @@ const router = express.Router()
 const User = require('../models/user')
 
 // All Users Route
-router.get('/', (req, res) => {
-    res.render('users/index')
+router.get('/', async (req, res) => {
+    try{
+        const users = await User.find({})
+        res.render('users/index', { users: users})
+    } catch {
+        res.redirect('/')
+    }
 })
 
 // New User Route
@@ -20,7 +25,7 @@ router.post('/', async (req, res) => {
 
     try{
         const newUser = await user.save()
-        //res.redirect(`users/ ${newUser.id})
+        //res.redirect(` / ${newUser.id})
         res.redirect(`users`)
     } catch {
         res.render('users/new', {
