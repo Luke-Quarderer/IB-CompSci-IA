@@ -1,0 +1,38 @@
+<div>
+    <label>Date</label>
+    <input type="date" name="date" 
+        value = "<%= log.date == null ? '' : 
+        log.date.toISOString().split('T')[0] %>">
+</div>
+<div>
+    <label>Time Flown (in minutes)</label>
+    <input type="text" name="timeFlown" value = "<%= log.timeFlown %>">
+</div>
+<div>
+    <label>Conditions</label>
+    <textarea name = "conditions"><%= log.conditions%></textarea>
+</div>
+<div>
+    <label>VFR or IFR</label>
+    <select name="vfrIFR">
+    <option selected label = "VFR" value = "<%= log.vfrIFR %>">
+    <option label = "IFR" value = "<%= log.vfrIFR %>">
+    </select>
+    </div> 
+
+<div>
+    <label>Tail Number</label>
+    <input type="text" name="tailNo" value = "<%= log.tailNo %>">
+</div>
+<div>
+   <label>Solo or Instructor</label>
+    <select name="solo">
+    <option selected label = "Solo" value = "<%= log.solo %>">
+    <option label = "Instructor" value = "<%= log.solo %>">
+    </select>
+    </div>
+
+    <div>
+        <label>Instructor License (if applicable)</label>
+        <input type="text" name="instructorLicense" value = "<%= log.instructorLicense %>">
+    </div>

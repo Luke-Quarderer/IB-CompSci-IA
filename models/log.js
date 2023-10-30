@@ -1,16 +1,16 @@
-const mongoose = require('mongoose')
+ const mongoose = require('mongoose')
 
 const logSchema = new mongoose.Schema({
     date:{
         type: Date,
         required: true
     },
-    timeOfDay:{
-        type: String,
+    timeFlown:{
+        type: Number,
         required: true
     },
     vfrIFR:{
-        type: Boolean,
+        type: Object,
         required: true
     },
     createdAt:{
@@ -23,17 +23,18 @@ const logSchema = new mongoose.Schema({
         required: true
     },
     solo:{
-        type: Boolean,
+        type: Object,
         default: false
-    },
+    },  
     tailNo:{
         type: String
     },
     instructorLicense: {
         type: String,
-        default: "blank"
+        default: ""
     }
 
 })
+
 
 module.exports = mongoose.model('Log', logSchema)
