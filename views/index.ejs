@@ -1,1 +1,29 @@
-Middle
+<h2>Recently Added</h2>
+<style>
+    tr {
+      border-bottom: 1px solid #ddd;
+    }
+        tr:nth-child(even) {
+      background-color: #D6EEEE;
+    }
+    </style>
+    <div>
+    <table>
+        <tr>
+         <th>Date</th>  
+         <th>Time Flown</th> 
+         <th>VFR or IFR</th>
+         <th>Conditions</th>
+         <th>Tail Number</th>
+        </tr>
+    <% logs.forEach(log => { %>
+        <tr>
+        <td><%= log.date.toISOString().split('T')[0] %></td>
+       <td><%= log.timeFlown %> minutes</td>
+        <td><%= log.vfrIFR %></td>
+        <td><%= log.conditions %></td>
+        <td><%= log.tailNo %></td>
+        </tr>
+    <% })%>
+    </table>
+    </div>

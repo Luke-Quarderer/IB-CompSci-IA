@@ -22,16 +22,19 @@ const logSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    comments:{
+        type: String
+    },
     solo:{
         type: Object,
-        default: false
+        required: true
     },  
     tailNo:{
         type: String
     },
     instructorLicense: {
         type: String,
-        default: ""
+        default: "not applicable"
     }
 
 })

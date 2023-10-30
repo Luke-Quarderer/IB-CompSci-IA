@@ -5,10 +5,21 @@ const Log = require('../models/log')
 const log = require('../models/log')
 const { render } = require('ejs')
 
+
 // All Logs Route
 router.get('/', async (req, res) => {
+  let query = Log.find()
+  if (req.query.tailNo != null && req.query.tailNo != '') {
+    query = query.regex('tailNo', new RegExp(req.query.tailNo, 'i'))
+  }
+    if (req.query.flownBefore != null && req.query.flownBefore != '') {
+    query = query.lte('date', req.query.flownBefore)
+    }
+    if (req.query.flownAfter != null && req.query.flownAfter != '') {
+      query = query.gte('date', req.query.flownAfter)
+      }
   try{
-    const logs =  await Log.find({})
+    const logs =  await query.exec()
     res.render('logs/index', {
       logs: logs,
       searchOptions: req.query

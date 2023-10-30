@@ -1,3 +1,4 @@
+
 <div>
     <label>Date</label>
     <input type="date" name="date" 
@@ -10,16 +11,19 @@
 </div>
 <div>
     <label>Conditions</label>
-    <textarea name = "conditions"><%= log.conditions%></textarea>
+    <input type="text" name="conditions" value = "<%= log.conditions %>">
+</div>
+<div>
+    <label>Other Comments</label>
+    <textarea name = "comments"><%= log.comments%></textarea>
 </div>
 <div>
     <label>VFR or IFR</label>
-    <select name="vfrIFR">
-    <option selected label = "VFR" value = "<%= log.vfrIFR %>">
-    <option label = "IFR" value = "<%= log.vfrIFR %>">
+    <select name ="vfrIFR">
+    <option selected label = "VFR" value = "<%= log.vfrIFR%>">
+    <option label = "IFR" value = "<%= log.vfrIFR%>">
     </select>
     </div> 
-
 <div>
     <label>Tail Number</label>
     <input type="text" name="tailNo" value = "<%= log.tailNo %>">
@@ -36,3 +40,4 @@
         <label>Instructor License (if applicable)</label>
         <input type="text" name="instructorLicense" value = "<%= log.instructorLicense %>">
     </div>
+
