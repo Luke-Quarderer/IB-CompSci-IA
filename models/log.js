@@ -11,7 +11,8 @@ const logSchema = new mongoose.Schema({
     },
     vfrIFR:{
         type: Object,
-        required: true
+        required: true,
+        default: 'string'
     },
     createdAt:{
         type: Date,
