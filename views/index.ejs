@@ -15,6 +15,8 @@
          <th>VFR or IFR</th>
          <th>Conditions</th>
          <th>Tail Number</th>
+         <th>Solo or Instructor</th>
+         <th>Instructor License</th>
         </tr>
     <% logs.forEach(log => { %>
         <tr>
@@ -23,6 +25,8 @@
         <td><%= log.vfrIFR %></td>
         <td><%= log.conditions %></td>
         <td><%= log.tailNo %></td>
+        <td><%= log.solo%></td>
+        <td><%= log.instructorLicense%></td>
         </tr>
     <% })%>
     </table>
