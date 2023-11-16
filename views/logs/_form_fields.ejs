@@ -19,9 +19,10 @@
 </div>
 <div>
     <label>VFR or IFR</label>
-    <select name ="vfrIFR">
-    <option selected label = "VFR" value = "<%= log.vfrIFR%>">
-    <option label = "IFR" value = "<%= log.vfrIFR%>">
+    <select id ="vI">
+    <option value = "">--Please choose an option--</option>
+    <option value = "VFR">VFR</option>
+    <option value = "IFR">IFR</option>
     </select>
     </div> 
 <div>
@@ -35,7 +36,6 @@
     <option label = "Instructor" value = "<%= log.solo %>">
     </select>
     </div>
-
     <div>
         <label>Instructor License (if applicable)</label>
         <input type="text" name="instructorLicense" value = "<%= log.instructorLicense %>">
