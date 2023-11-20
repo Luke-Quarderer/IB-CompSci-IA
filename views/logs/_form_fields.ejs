@@ -17,12 +17,14 @@
     <label>Other Comments</label>
     <textarea name = "comments"><%= log.comments%></textarea>
 </div>
+<script type = "text/javascript">
+</script>
 <div>
     <label>VFR or IFR</label>
-    <select id ="vI">
-    <option value = "">--Please choose an option--</option>
-    <option value = "VFR">VFR</option>
-    <option value = "IFR">IFR</option>
+    <select name ="vfrIFR">
+    <option value = "" selected disabled>--Please choose an option--</option>
+    <option value = "<%= log.vfrIFR%>">VFR</option>
+    <option value = "<%= log.vfrIFR%>"%>>IFR</option>
     </select>
     </div> 
 <div>
