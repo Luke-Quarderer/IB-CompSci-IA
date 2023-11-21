@@ -51,6 +51,7 @@ router.post('/', async (req, res) => {
   } catch {
     renderNewPage(res, log, true)
   }
+  console.log(log)
 })
 
 async function renderNewPage(res, log, hasError = false){

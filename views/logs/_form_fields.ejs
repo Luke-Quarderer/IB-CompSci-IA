@@ -21,11 +21,14 @@
 </script>
 <div>
     <label>VFR or IFR</label>
-    <select name ="vfrIFR">
-    <option value = "" selected disabled>--Please choose an option--</option>
-    <option value = "<%= log.vfrIFR%>">VFR</option>
-    <option value = "<%= log.vfrIFR%>"%>>IFR</option>
+    <input type="text" name= "vfrIFR" value = "<%= log.vfrIFR %>">
+   <!-- <label>VFR or IFR</label>
+    <select id ="vfrIFR">
+    <option label = "--Please choose an option--" value = "" selected disabled>
+    <option label ="VFR" value = "VFR">
+    <option label = "IFR" value = "IFR">
     </select>
+    -->
     </div> 
 <div>
     <label>Tail Number</label>
@@ -33,10 +36,14 @@
 </div>
 <div>
    <label>Solo or Instructor</label>
-    <select name="solo">
-    <option selected label = "Solo" value = "<%= log.solo %>">
-    <option label = "Instructor" value = "<%= log.solo %>">
+   <input type="text" name="solo" value = "<%= log.solo %>">
+   <!--
+    <select id ="solo">
+    <option value = "" selected disabled>--Please choose an option--</option>
+    <option label = "Solo" value = "Solo">
+    <option label = "Instructor" value = "Instructor">
     </select>
+    -->
     </div>
     <div>
         <label>Instructor License (if applicable)</label>

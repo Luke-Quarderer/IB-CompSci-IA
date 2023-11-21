@@ -10,7 +10,7 @@ const logSchema = new mongoose.Schema({
         required: true
     },
     vfrIFR:{
-        type: Object,
+        type: String,
         required: true,
     },
     createdAt:{
@@ -26,7 +26,7 @@ const logSchema = new mongoose.Schema({
         type: String
     },
     solo:{
-        type: Object,
+        type: String,
         required: true
     },  
     tailNo:{
