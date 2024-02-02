@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
 
 // New User Route
 router.get('/new', (req, res) => {
-    res.render('users/new', {user: new User()})
+     
 }) 
 
 // Create User Route
@@ -45,16 +45,22 @@ router.post('/', async (req, res) => {
 router.get('/:name', (req, res) => {
     res.send('Show User ' + req.params.name)
 })
-
-router.get('/:name/edit', (req,res) => {
-    res.send('Edit User ' + req.params.name)
+//Edit User Route
+router.get('/:name/edit', async  (req,res) => {
+    try{
+        const user = User.findById(req.params.id)
+        res.render('users/edit', {user: user})
+    }
+    catch{
+        res.redirect('/users')
+    }
 })
 
 router.put('/:name', (req, res) => {
     res.send('Update User ' + req.params.name)
 })
-
-router.delete(':name', (req, res) => {
+//Delete User Route
+router.delete('/:name', (req, res) => {
     res.send('Delete User ' + req.params.name )
 })
 
