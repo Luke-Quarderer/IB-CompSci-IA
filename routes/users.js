@@ -42,11 +42,11 @@ router.post('/', async (req, res) => {
     }   
 })
 
-router.get('/:name', (req, res) => {
-    res.send('Show User ' + req.params.name)
+router.get('/:id', (req, res) => {
+    res.send('Show User ' + req.params.id)
 })
 //Edit User Route
-router.get('/:name/edit', async  (req,res) => {
+router.get('/:id/edit', async  (req,res) => {
     try{
         const user = User.findById(req.params.id)
         res.render('users/edit', {user: user})
@@ -56,12 +56,12 @@ router.get('/:name/edit', async  (req,res) => {
     }
 })
 
-router.put('/:name', (req, res) => {
-    res.send('Update User ' + req.params.name)
+router.put('/:id', (req, res) => {
+    res.send('Update User ' + req.params.id)
 })
 //Delete User Route
-router.delete('/:name', (req, res) => {
-    res.send('Delete User ' + req.params.name )
+router.delete('/:id', (req, res) => {
+    res.send('Delete User ' + req.params.id)
 })
 
 module.exports = router  
