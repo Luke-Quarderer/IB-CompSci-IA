@@ -32,8 +32,7 @@ router.post('/', async (req, res) => {
 
     try{
         const newUser = await user.save()
-        //res.redirect(` / ${newUser.id})
-        res.redirect(`users`)
+        res.redirect(` / ${newUser.id}`)
     } catch {
         res.render('users/new', {
             user: user, 
@@ -57,7 +56,21 @@ router.get('/:id/edit', async  (req,res) => {
 })
 
 router.put('/:id', (req, res) => {
-    res.send('Update User ' + req.params.id)
+    let author 
+    try{
+        author = await Author.findById(req.params.id)
+        await user.save()
+        res.redirect(` / ${user.id}`)
+        res.redirect(`users`)
+    } catch {
+        if(user == null){
+            res.redirect('/')
+        }
+        res.render('users/edit', {
+            user: user, 
+            errorMessage: 'Error creating User'
+        })
+    }   
 })
 //Delete User Route
 router.delete('/:id', (req, res) => {
