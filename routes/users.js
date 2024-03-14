@@ -55,20 +55,19 @@ router.get('/:id/edit', async  (req,res) => {
     }
 })
 
-router.put('/:id', (req, res) => {
-    let author 
+router.put('/:id', async (req, res) => {
+    let user
     try{
-        author = await Author.findById(req.params.id)
+        user  = await User.findById(req.params.id)
         await user.save()
-        res.redirect(` / ${user.id}`)
-        res.redirect(`users`)
+        res.redirect(`/users/${user.id}`)
     } catch {
         if(user == null){
             res.redirect('/')
         }
         res.render('users/edit', {
             user: user, 
-            errorMessage: 'Error creating User'
+            errorMessage: 'Error updating User'
         })
     }   
 })
