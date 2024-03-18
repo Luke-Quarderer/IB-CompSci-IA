@@ -5,8 +5,8 @@ const User = require('../models/user')
 // All Users Route
 router.get('/', async (req, res) => {
     let searchOptions = {}
-    if (req.query.name != null && req.query.name !== ''){
-        searchOptions.name = new RegExp(req.query.name, 'i')
+    if (req.query.username != null && req.query.username !== ''){
+        searchOptions.username = new RegExp(req.query.username, 'i')
     }
     try{
         const users = await User.find(searchOptions)
@@ -21,13 +21,15 @@ router.get('/', async (req, res) => {
 
 // New User Route
 router.get('/new', (req, res) => {
-     
+     res.render('users/new', {user: new User})
 }) 
 
 // Create User Route
 router.post('/', async (req, res) => {
     const user = new User({
-        name: req.body.name
+        username: req.body.username,
+        password: req.body.password,
+        email: req.body.email
     })
 
     try{

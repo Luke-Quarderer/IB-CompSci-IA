@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
     } catch {
         logs = []
     }
-    res.render('index', {logs: logs })
+    res.render('home', {logs: logs})
 })
 
 module.exports = router 
