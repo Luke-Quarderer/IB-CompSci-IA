@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-const User = require('../models/log')
 const Log = require('../models/log')
 const log = require('../models/log')
 const { render } = require('ejs')
