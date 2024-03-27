@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
 
 // New User Route
 router.get('/new', (req, res) => {
-     res.render('users/new', {user: new User})
+     res.render('users/new', {user: new User()})
 }) 
 
 // Create User Route
@@ -48,7 +48,7 @@ router.get('/:id', (req, res) => {
 //Edit User Route
 router.get('/:id/edit', async  (req,res) => {
     try{
-        const user = User.findById(req.params.id)
+        const user = await User.findById(req.params.id)
         res.render('users/edit', {user: user})
     }
     catch{
@@ -60,6 +60,8 @@ router.put('/:id', async (req, res) => {
     let user
     try{
         user  = await User.findById(req.params.id)
+        user.username = req.body.user
+        user.password = req.body.password
         await user.save()
         res.redirect(`/users/${user.id}`)
     } catch {
@@ -73,8 +75,21 @@ router.put('/:id', async (req, res) => {
     }   
 })
 //Delete User Route
-router.delete('/:id', (req, res) => {
-    res.send('Delete User ' + req.params.id)
+router.delete('/:id',async (req, res) => {
+    let user 
+    try {
+        user = await User.findById(req.params.id)
+        await user.remove()
+        res.redirect('/users') 
+    }
+    catch{
+        if(user == null){
+            res.redirect('/')
+        }
+        else{
+            res.redirect(`/users/${user.id}`)
+    }
+}
 })
 
 module.exports = router  

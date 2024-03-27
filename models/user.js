@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     logs: {
-        type: Array,
+        type: Array
     }
 })
 const passportLocalMongoose = require("passport-local-mongoose")

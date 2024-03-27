@@ -3,17 +3,17 @@ const router = express.Router()
 const User = require('../models/user') 
 
 router.get('/', async (req, res) => {
-    //Showing login form
+    //display login
     res.render("login")
 })
  
-//Handling user login
+//user login
 router.post('/', async function(req, res){
     try {
-        // check if the user exists
+        //username input validation
         const user = await User.findOne({ username: req.body.username })
         if (user) {
-          //check if password matches
+          //password input validation
           const result = req.body.password === user.password
           if (result) {
             res.render("secret")
@@ -28,7 +28,7 @@ router.post('/', async function(req, res){
       }
 })
  
-//Handling user logout 
+//user logout
 router.get('/', function (req, res) {
     req.logout(function(err) {
         if (err) { return next(err); }

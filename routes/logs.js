@@ -50,7 +50,6 @@ router.post('/', async (req, res) => {
   } catch {
     renderNewPage(res, log, true)
   }
-  console.log(log)
 })
 
 async function renderNewPage(res, log, hasError = false){
@@ -58,6 +57,7 @@ async function renderNewPage(res, log, hasError = false){
     const params = {
       log: log
     }
+    //validating input 
     if(hasError) params.errorMessage = 'Error Creating Log'
     res.render('logs/new', params)
   } catch {

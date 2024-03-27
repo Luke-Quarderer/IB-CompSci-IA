@@ -4,14 +4,6 @@ if (process.env.NODE_ENV !== 'production') {
 
 const User = require('./models/user')
 
-const express = require('express'), 
-passport = require("passport"),
-LocalStrategy = require("passport-local")
-let app = express()
-const expressLayouts = require('express-ejs-layouts')
-const bodyParser = require('body-parser')
-const methodOverride = require('method-override')
-
 
 const indexRouter = require('./routes/index')
 const userRouter = require('./routes/users')
@@ -19,6 +11,14 @@ const logRouter = require('./routes/logs')
 const loginRouter = require('./routes/login')
 const registerRouter = require('./routes/register')
 const logoutRouter = require('./routes/logout')
+
+const express = require('express'), 
+passport = require("passport"),
+LocalStrategy = require("passport-local"),
+expressLayouts = require('express-ejs-layouts'),
+bodyParser = require('body-parser'),
+methodOverride = require('method-override')
+let app = express()
 
 
 app.set('view engine', 'ejs')
