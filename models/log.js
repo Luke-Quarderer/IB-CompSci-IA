@@ -19,10 +19,6 @@ const logSchema = new mongoose.Schema({
         default: Date.now
     },
     conditions:{
-        type: String,
-        required: true
-    },
-    comments:{
         type: String
     },
     solo:{

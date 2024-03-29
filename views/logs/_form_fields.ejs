@@ -1,12 +1,12 @@
 
 <div>
-    <label>Date</label>
+    <label>Date*</label>
     <input type="date" name="date" 
         value = "<%= log.date == null ? '' : 
         log.date.toISOString().split('T')[0] %>">
 </div>
 <div>
-    <label>Time Flown (in hours)</label>
+    <label>Time Flown (in hours)*</label>
     <input type="text" name="timeFlown" value = "<%= log.timeFlown %>">
 </div>
 <div>
@@ -16,7 +16,7 @@
 <script type = "text/javascript">
 </script>
 <div>
-    <label>VFR or IFR</label>
+    <label>VFR or IFR*</label>
     <input type="text" name= "vfrIFR" value = "<%= log.vfrIFR %>">
    <!-- <label>VFR or IFR</label>
     <select id ="vfrIFR">
@@ -31,7 +31,7 @@
     <input type="text" name="tailNo" value = "<%= log.tailNo %>">
 </div>
 <div>
-   <label>Solo or Instructor</label>
+   <label>Solo or Instructor*</label>
    <input type="text" name="solo" value = "<%= log.solo %>">
    <!--
     <select id ="solo">
