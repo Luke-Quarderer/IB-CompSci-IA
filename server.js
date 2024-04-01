@@ -11,6 +11,7 @@ const logRouter = require('./routes/logs')
 const loginRouter = require('./routes/login')
 const registerRouter = require('./routes/register')
 const logoutRouter = require('./routes/logout')
+const homeRouter = require('./routes/home')
 
 const express = require('express'), 
 passport = require("passport"),
@@ -59,6 +60,7 @@ app.use('/logs', logRouter)
 app.use('/login', loginRouter)
 app.use('/register', registerRouter)
 app.use('/logout', logoutRouter)
+app.use('/home', homeRouter)
 
 app.listen(process.env.PORT || 3000)
 
