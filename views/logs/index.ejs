@@ -8,23 +8,29 @@ tr {
 </style>
 <h2 class="page-header">Search Logs</h2>
 <form action="/logs" method="GET">
-    <div>
+    <div class="form-row">
+    <div class="form-item">
     <label>Flown After</label>
     <input type = "date" name="flownAfter" value= "<%= searchOptions.flownAfter %>">
     </div>
-    <div>
+    <div class="form-item">
         <label>Flown Before</label>
         <input type = "date" name="flownBefore" value= "<%= searchOptions.flownBefore %>">
         </div>
-    <div>
+        </div>
+        <div class="form-row">
+    <div class="form-item">
         <label>VFR or IFR</label>
         <input type = "text" name="vfrIFR" value= "<%= searchOptions.vfrIFR %>">
         </div>
-        <div>
+        <div class="form-item">
             <label>Tail Number</label>
             <input type = "text" name="tailNo" value= "<%= searchOptions.tailNo %>">
             </div>
-    <button type ="submit ">Search</button>
+        </div>
+        <div class = "form-row form-row-end">
+    <button class ="btn btn-primary" type ="submit ">Search</button>
+</div>
 </form>
 <br>
 <div>
