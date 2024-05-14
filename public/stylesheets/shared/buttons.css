@@ -50,7 +50,7 @@
     background-color: var(--color-btn-del-background)
 }
 
-.btn-del:hover {
+.btn-del-dark {
     color: var(--color-btn-del-text-dark);
     background-color: var(--color-btn-del-background-dark)
 }

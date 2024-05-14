@@ -1,41 +1,48 @@
 
-<div class="form-row">
-    <div class="form-item">
-        <label>Date<font color ="red">*</font></label>
+<div>
+    <label>Date*</label>
     <input type="date" name="date" 
         value = "<%= log.date == null ? '' : 
         log.date.toISOString().split('T')[0] %>">
-    </div>
-    <div class="form-item">
-        <label>Time Flown (in hours)<font color ="red">*</font></label>
-        <input type="text" name="timeFlown" value = "<%= log.timeFlown %>">
-    </div>
 </div>
-<div class="form-row">
-    <div class="form-item">
-        <label>Conditions</label>
-        <input type="text" name="conditions" value = "<%= log.conditions %>">
-    </div>
-    <div class="form-item">
-        <label>VFR or IFR<font color ="red">*</font></label>
-        <input type="text" name= "vfrIFR" value = "<%= log.vfrIFR %>">
-    </div>
+<div>
+    <label>Time Flown (in hours)*</label>
+    <input type="text" name="timeFlown" value = "<%= log.timeFlown %>">
+</div>
+<div>
+    <label>Conditions</label>
+    <input type="text" name="conditions" value = "<%= log.conditions %>">
 </div>
 <script type = "text/javascript">
 </script>
-<div class="form-row">
-    <div class="form-item">
-        <label>Tail Number</label>
-        <input type="text" name="tailNo" value = "<%= log.tailNo %>">
-    </div>
-    <div class="form-item">
-        <label>Solo or Instructor<font color ="red">*</font></label>
-        <input type="text" name="solo" value = "<%= log.solo %>">
-    </div>
+<div>
+    <label>VFR or IFR*</label>
+    <input type="text" name= "vfrIFR" value = "<%= log.vfrIFR %>">
+   <!-- <label>VFR or IFR</label>
+    <select id ="vfrIFR">
+    <option label = "--Please choose an option--" value = "" selected disabled>
+    <option label ="VFR" value = "VFR">
+    <option label = "IFR" value = "IFR">
+    </select>
+    -->
+    </div> 
+<div>
+    <label>Tail Number</label>
+    <input type="text" name="tailNo" value = "<%= log.tailNo %>">
 </div>
-<div class="form-row">
-    <div class="form-item">
+<div>
+   <label>Solo or Instructor*</label>
+   <input type="text" name="solo" value = "<%= log.solo %>">
+   <!--
+    <select id ="solo">
+    <option value = "" selected disabled>--Please choose an option--</option>
+    <option label = "Solo" value = "Solo">
+    <option label = "Instructor" value = "Instructor">
+    </select>
+    -->
+    </div>
+    <div>
         <label>Instructor License (if applicable)</label>
         <input type="text" name="instructorLicense" value = "<%= log.instructorLicense %>">
     </div>
-</div>
+
