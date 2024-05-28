@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Log = require('../models/log')
 const { render } = require('ejs')
+const log = require('../models/log')
 
 
 // All Logs Route
@@ -63,5 +64,57 @@ async function renderNewPage(res, log, hasError = false){
     res.redirect('/logs')
   }
 }
+
+//Edit Log Route
+router.get('/:id/edit', async  (req,res) => {
+  try{
+      const log = await Log.findById(req.params.id)
+      res.render('logs/edit', {log: log})
+  }
+  catch{
+      res.redirect('/logs')
+  }
+})
+
+router.put('/:id', async (req, res) => {
+  let log
+  try{
+      log  = await Log.findById(req.params.id)
+      log.date = req.body.date
+      log.timeFlown = req.body.timeFlown
+      log.vfrIFR = req.body.vfrIFR
+      log.createdAt = req.body.createdAt
+      log.conditions = req.body.conditions
+      log.solo = req.body.solo
+      log.tailNo = req.body.tailNo
+      log.instructorLicense = req.body.instructorLicense
+
+      await log.save()
+      res.redirect('/logs')
+  } catch {
+      if(log == null){
+          res.redirect('/')
+      }
+      res.render('log/edit', {
+          log: log, 
+          errorMessage: 'Error updating log'
+      })
+  }   
+})
+
+//Delete Log Route
+router.delete('/:id',async (req, res) => {
+  let log
+  try {
+      log = await Log.findById(req.params.id)
+      await log.remove()
+      res.redirect('/logs') 
+  }
+  catch{
+          res.redirect('/')
+    
+}
+})
+
 
 module.exports = router  
