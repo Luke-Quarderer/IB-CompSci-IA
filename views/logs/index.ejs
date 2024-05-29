@@ -51,7 +51,7 @@ tr {
     <td><%= log.instructorLicense%></td>
     <td> <a class="btn btn-primary" href="/logs/<%= log.id %>/edit">Edit</a></td>
     <td><%- include('../partials/deleteForm', 
-        { url: `/logs/${log}.id}`}) %>   </td>
+        { url: `/logs/${log.id}`}) %>   </td>
     </tr>
 <% })%>
 </table>

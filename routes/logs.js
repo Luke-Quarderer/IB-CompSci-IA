@@ -2,7 +2,6 @@ const express = require('express')
 const router = express.Router()
 const Log = require('../models/log')
 const { render } = require('ejs')
-const log = require('../models/log')
 
 
 // All Logs Route
@@ -95,7 +94,7 @@ router.put('/:id', async (req, res) => {
       if(log == null){
           res.redirect('/')
       }
-      res.render('log/edit', {
+      res.render('logs/edit', {
           log: log, 
           errorMessage: 'Error updating log'
       })
@@ -105,9 +104,13 @@ router.put('/:id', async (req, res) => {
 //Delete Log Route
 router.delete('/:id',async (req, res) => {
   let log
+
   try {
-      log = await Log.findById(req.params.id)
-      await log.remove()
+      await Log.deleteOne({ _id: req.params.id}).then((result) => {
+        console.log(result);
+      })
+      console.log(log)
+      //await log.remove()
       res.redirect('/logs') 
   }
   catch{
