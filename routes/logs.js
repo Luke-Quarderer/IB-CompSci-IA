@@ -76,8 +76,10 @@ router.get('/:id/edit', async  (req,res) => {
 })
 
 router.put('/:id', async (req, res) => {
-  let log
+  //let log
+  const log = await Log.findById(req.params.id)
   try{
+      /* 
       log  = await Log.findById(req.params.id)
       log.date = req.body.date
       log.timeFlown = req.body.timeFlown
@@ -87,10 +89,18 @@ router.put('/:id', async (req, res) => {
       log.solo = req.body.solo
       log.tailNo = req.body.tailNo
       log.instructorLicense = req.body.instructorLicense
+      */
+      
+      db.seek.updateOne(
+        {createdAt : log.createdAt},
+        {$set : {tailNo: req.body.tailNo}})
 
-      await log.save()
+      //await log.save()
       res.redirect('/logs')
   } catch {
+      console.log(log.tailNo)
+      console.log(log.createdAt)
+      console.log(req.body.tailNo)
       if(log == null){
           res.redirect('/')
       }
