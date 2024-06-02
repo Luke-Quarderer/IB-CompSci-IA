@@ -3,6 +3,13 @@ const router = express.Router()
 const Log = require('../models/log')
 const { render } = require('ejs')
 
+const mongoose = require('mongoose')
+mongoose.connect(process.env.DATABASE_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true  
+})
+const db = mongoose.connection
+
 
 // All Logs Route
 router.get('/', async (req, res) => {
@@ -90,16 +97,21 @@ router.put('/:id', async (req, res) => {
       log.tailNo = req.body.tailNo
       log.instructorLicense = req.body.instructorLicense
       */
-      
-      db.seek.updateOne(
-        {createdAt : log.createdAt},
-        {$set : {tailNo: req.body.tailNo}})
-
-      //await log.save()
+     const filter = {_id : log.id}
+     const newValues = {$set: {date: req.body.date, timeFlown: req.body.timeFlown, vfrIFR: req.body.vfrIFR, createdAt: req.body.createdAt, conditions: req.body.conditions, solo: req.body.solo, tailNo: req.body.tailNo, instructorLicense: req.body.instructorLicense}}
+     //db.logCollection.updateOne(filter , newValues)
+    
+     
+      Log.findByIdAndUpdate(log.id, {tailNo : req.body.tailNo})
+      await log.save()
       res.redirect('/logs')
+      console.log(log.tailNo)
+      console.log(log.id)
+      console.log(req.body.tailNo)
+
   } catch {
       console.log(log.tailNo)
-      console.log(log.createdAt)
+      console.log(log.id)
       console.log(req.body.tailNo)
       if(log == null){
           res.redirect('/')

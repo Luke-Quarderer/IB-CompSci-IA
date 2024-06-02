@@ -33,7 +33,7 @@ const logSchema = new mongoose.Schema({
         default: "not applicable"
     }
 
-})
+}, {collection: 'logCollection'})
 
 
 module.exports = mongoose.model('Log', logSchema)
