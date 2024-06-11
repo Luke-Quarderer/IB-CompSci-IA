@@ -23,6 +23,9 @@ router.get('/', async (req, res) => {
     if (req.query.flownAfter != null && req.query.flownAfter != '') {
       query = query.gte('date', req.query.flownAfter)
       }
+      if (req.query.vfrIFR != null && req.query.vfrIFR != '') {
+        query = query.gte('vfrIFR', req.query.vfrIFR)
+        }
   try{
     const logs =  await query.exec()
     res.render('logs/index', {
@@ -81,7 +84,7 @@ router.get('/:id/edit', async  (req,res) => {
       res.redirect('/logs')
   }
 })
-
+//edit
 router.put('/:id', async (req, res) => {
 
   try {

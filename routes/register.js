@@ -14,8 +14,8 @@ router.post('/', async (req, res) => {
       password: req.body.password,
       logs: req.body.logs
     })
-   
-    return res.status(200).json(user)
+   res.redirect('/')
+    //return res.status(200).json(user)
   })
 
   module.exports = router 
