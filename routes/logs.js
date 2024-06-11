@@ -123,45 +123,6 @@ router.put('/:id', async (req, res) => {
       errorMessage: 'Error updating log'
     });
   }
-  //let log
-  //const log = await Log.findById(req.params.id)
-  //try{
-      /* 
-      log  = await Log.findById(req.params.id)
-      log.date = req.body.date
-      log.timeFlown = req.body.timeFlown
-      log.vfrIFR = req.body.vfrIFR
-      log.createdAt = req.body.createdAt
-      log.conditions = req.body.conditions
-      log.solo = req.body.solo
-      log.tailNo = req.body.tailNo
-      log.instructorLicense = req.body.instructorLicense
-      */
-     //const filter = {_id : log.id}
-     //const newValues = {$set: {date: req.body.date, timeFlown: req.body.timeFlown, vfrIFR: req.body.vfrIFR, createdAt: req.body.createdAt, conditions: req.body.conditions, solo: req.body.solo, tailNo: req.body.tailNo, instructorLicense: req.body.instructorLicense}}
-     //db.logCollection.updateOne(filter , newValues)
-    
-     
-    /*  Log.findByIdAndUpdate(log.id, {tailNo : req.body.tailNo})
-      //await log.save()
-      res.redirect('/logs')
-      console.log(log.tailNo)
-      console.log(log.id)
-      console.log(req.body.tailNo)
-
-  } catch {
-      console.log(log.tailNo)
-      console.log(log.id)
-      console.log(req.body.tailNo)
-      if(log == null){
-          res.redirect('/')
-      }
-      res.render('logs/edit', {
-          log: log, 
-          errorMessage: 'Error updating log'
-      })
-    
-  }   */
 })
 
 //Delete Log Route
