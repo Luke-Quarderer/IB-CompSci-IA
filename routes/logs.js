@@ -83,9 +83,49 @@ router.get('/:id/edit', async  (req,res) => {
 })
 
 router.put('/:id', async (req, res) => {
+
+  try {
+    // Find the log by ID and update it with the request body data
+    const log = await Log.findByIdAndUpdate(
+      req.params.id,
+      {
+        date: req.body.date,
+        timeFlown: req.body.timeFlown,
+        vfrIFR: req.body.vfrIFR,
+        createdAt: req.body.createdAt,
+        conditions: req.body.conditions,
+        solo: req.body.solo,
+        tailNo: req.body.tailNo,
+        instructorLicense: req.body.instructorLicense
+      },
+      { new: true } // Return the updated document
+    );
+
+    // If log is not found, redirect to the home page
+    if (!log) {
+      return res.redirect('/');
+    }
+
+    // Redirect to the logs page
+    res.redirect('/logs');
+
+    // Log the updated information for debugging
+    console.log(log.tailNo);
+    console.log(log.id);
+    console.log(req.body.tailNo);
+  } catch (error) {
+    // Log the error information for debugging
+    console.error(error);
+
+    // If an error occurs, render the edit page with an error message
+    res.render('logs/edit', {
+      log: log,
+      errorMessage: 'Error updating log'
+    });
+  }
   //let log
-  const log = await Log.findById(req.params.id)
-  try{
+  //const log = await Log.findById(req.params.id)
+  //try{
       /* 
       log  = await Log.findById(req.params.id)
       log.date = req.body.date
@@ -97,13 +137,13 @@ router.put('/:id', async (req, res) => {
       log.tailNo = req.body.tailNo
       log.instructorLicense = req.body.instructorLicense
       */
-     const filter = {_id : log.id}
-     const newValues = {$set: {date: req.body.date, timeFlown: req.body.timeFlown, vfrIFR: req.body.vfrIFR, createdAt: req.body.createdAt, conditions: req.body.conditions, solo: req.body.solo, tailNo: req.body.tailNo, instructorLicense: req.body.instructorLicense}}
+     //const filter = {_id : log.id}
+     //const newValues = {$set: {date: req.body.date, timeFlown: req.body.timeFlown, vfrIFR: req.body.vfrIFR, createdAt: req.body.createdAt, conditions: req.body.conditions, solo: req.body.solo, tailNo: req.body.tailNo, instructorLicense: req.body.instructorLicense}}
      //db.logCollection.updateOne(filter , newValues)
     
      
-      Log.findByIdAndUpdate(log.id, {tailNo : req.body.tailNo})
-      await log.save()
+    /*  Log.findByIdAndUpdate(log.id, {tailNo : req.body.tailNo})
+      //await log.save()
       res.redirect('/logs')
       console.log(log.tailNo)
       console.log(log.id)
@@ -120,7 +160,8 @@ router.put('/:id', async (req, res) => {
           log: log, 
           errorMessage: 'Error updating log'
       })
-  }   
+    
+  }   */
 })
 
 //Delete Log Route
